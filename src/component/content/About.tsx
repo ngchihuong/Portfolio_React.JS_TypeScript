@@ -80,7 +80,7 @@ export default function About() {
                                                 <span><label>Mail:</label> <a href="nguyenchihuong232@gmail.com">nguyenchihuong232&#64;gmail.com</a></span>
                                             </li>
                                             <li>
-                                                <span><label>Facebook:</label> <a href="#">Nguyễn Hướng</a></span>
+                                                <span><label>Github:</label> <a href="https://github.com/ngchihuong">ngchihuong</a></span>
                                             </li>
                                         </ul>
                                     </div>
