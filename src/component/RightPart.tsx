@@ -4,29 +4,33 @@ import HomeCV from "./content/HomeCV";
 import Projects from "./content/Projects";
 import Skills from "./content/Skills";
 
-export default function RightPart() {
+interface IProps {
+    hideLeftPart: boolean;
+    setHideLeftPart: (value: boolean) => void;
+}
+export default function RightPart(props: IProps) {
     return (
-        <div className="arlo_tm_rightpart">
-                    <div className="rightpart_inner">
-                        <HomeCV/>
+        <div className={props.hideLeftPart === true ? "arlo_tm_rightpart opened" : "arlo_tm_rightpart"}>
+            <div className="rightpart_inner">
+                <HomeCV />
 
-                        {/*  <!-- ABOUT -->*/}
-                       <About/>
-                        {/*  <!-- /ABOUT -->*/}
+                {/*  <!-- ABOUT -->*/}
+                <About />
+                {/*  <!-- /ABOUT -->*/}
 
-                        {/*  <!-- SKILLS -->*/}
-                       <Skills/>
-                        {/*  <!-- /SKILLS -->*/}
+                {/*  <!-- SKILLS -->*/}
+                <Skills />
+                {/*  <!-- /SKILLS -->*/}
 
-                        {/*  <!-- SERVICES -->*/}
-                        <Projects/>
-                        {/*  <!-- /SERVICES -->*/}
+                {/*  <!-- SERVICES -->*/}
+                <Projects />
+                {/*  <!-- /SERVICES -->*/}
 
-                        {/*  <!-- CONTACT & FOOTER -->*/}
-                       <Contact/>
-                        {/*  <!-- /CONTACT & FOOTER -->*/}
+                {/*  <!-- CONTACT & FOOTER -->*/}
+                <Contact />
+                {/*  <!-- /CONTACT & FOOTER -->*/}
 
-                    </div>
-                </div>
+            </div>
+        </div>
     )
 }

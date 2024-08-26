@@ -3,8 +3,10 @@ import LeftPart from "../component/LeftPart";
 import MobileMenu from "../component/mobile/Menu";
 import PreLoader from "../component/Preloader";
 import RightPart from "../component/RightPart";
+import { useState } from "react";
 
 export default function Portfolio() {
+    const [hideLeftPart, setHideLeftPart] = useState<boolean>(false);
     return (
         <div className="arlo_tm_wrapper_all">
 
@@ -26,11 +28,17 @@ export default function Portfolio() {
             <div className="arlo_tm_content">
 
                 {/*  <!-- LEFTPART -->*/}
-                <LeftPart />
+                <LeftPart 
+                hideLeftPart={hideLeftPart}
+                setHideLeftPart={setHideLeftPart}
+                />
                 {/*  <!-- /LEFTPART -->*/}
 
                 {/*  <!-- RIGHTPART -->*/}
-                <RightPart />
+                <RightPart 
+                hideLeftPart={hideLeftPart}
+                setHideLeftPart={setHideLeftPart}
+                />
                 {/*  <!-- /RIGHTPART -->*/}
 
                 {/* <a className="arlo_tm_totop" href="#"></a> */}

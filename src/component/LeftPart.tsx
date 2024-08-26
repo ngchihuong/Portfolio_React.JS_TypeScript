@@ -4,9 +4,13 @@ import { FaFacebook, FaInstagramSquare } from "react-icons/fa"
 import { FaSquareGithub } from "react-icons/fa6"
 import { IoLogoLinkedin } from "react-icons/io5"
 
-export default function LeftPart() {
+interface IProps {
+    hideLeftPart: boolean;
+    setHideLeftPart: (value: boolean) => void;
+}
+export default function LeftPart(props: IProps) {
     return (
-        <div className="arlo_tm_leftpart_wrap">
+        <div className={props.hideLeftPart === true ? "arlo_tm_leftpart_wrap opened" : "arlo_tm_leftpart_wrap"}>
             <div className="leftpart_inner">
                 <div className="logo_wrap">
                     <a href="#"><img src={desktopLogo} style={{ borderRadius: "50%", width: "60%", height: "60%", border: "3px solid grey" }} alt="desktop-logo" /></a>
@@ -25,7 +29,7 @@ export default function LeftPart() {
                         <ul>
                             <li>
                                 <a href="https://www.facebook.com/ngchihuong.dzai" target="_blank">
-                                <FaFacebook />
+                                    <FaFacebook />
                                 </a>
                             </li>
                             <li><a href="https://www.tiktok.com/" target="_blank"><AiFillTikTok /></a></li>
@@ -35,7 +39,9 @@ export default function LeftPart() {
                         </ul>
                     </div>
                 </div>
-                <a className="arlo_tm_resize" href="#"><i className="xcon-angle-left"></i></a>
+                <a className={props.hideLeftPart === true ? "arlo_tm_resize opened" : "arlo_tm_resize"} href="#"
+                    onClick={() => props.setHideLeftPart(!props.hideLeftPart)}
+                ><i className={props.hideLeftPart === true ? "xcon-angle-left opened" : "xcon-angle-left"}></i></a>
             </div>
         </div>
     )
