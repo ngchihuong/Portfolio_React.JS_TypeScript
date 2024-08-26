@@ -1,3 +1,4 @@
+import { FloatButton } from "antd";
 import LeftPart from "../component/LeftPart";
 import MobileMenu from "../component/mobile/Menu";
 import PreLoader from "../component/Preloader";
@@ -18,7 +19,7 @@ export default function Portfolio() {
             {/*  <!-- /PRELOADER -->*/}
 
             {/*  <!-- MOBILE MENU -->*/}
-           <MobileMenu/>
+            <MobileMenu />
             {/*  <!-- /MOBILE MENU -->*/}
 
             {/*  <!-- CONTENT -->*/}
@@ -32,8 +33,10 @@ export default function Portfolio() {
                 <RightPart />
                 {/*  <!-- /RIGHTPART -->*/}
 
-                <a className="arlo_tm_totop" href="#"></a>
-
+                {/* <a className="arlo_tm_totop" href="#"></a> */}
+                <FloatButton.BackTop
+                    tooltip={<div>Trở về đầu trang</div>}
+                />
             </div>
         </div>
     )
