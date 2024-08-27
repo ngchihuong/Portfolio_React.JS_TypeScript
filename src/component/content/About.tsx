@@ -1,11 +1,25 @@
 import imageAbout from "@/assets/img/about/sunflower.jpg";
 import myCV from "@/assets/Nguyen-Chi-Huong-CV_ung_tuyen.pdf";
 import { TypeAnimation } from 'react-type-animation';
-
+// import Tilt from 'react-parallax-tilt';
+import { useEffect, useRef } from "react";
+import Parallax from "parallax-js";
+import logo550 from "@/assets/img/about/550x640.jpg"
 export default function About() {
+    const sceneEl = useRef(null)
+    useEffect(() => {
+        if (sceneEl && sceneEl.current) {
+            const parallaxInstance = new Parallax(sceneEl.current, {
+                relativeInput: true,
+                hoverOnly: true
+            })
+            parallaxInstance.enable()
+            return () => parallaxInstance.disable();
+        }
+    }, [])
     return (
         <>
-            <div className="arlo_tm_section relative" id="about">
+            <div className="arlo_tm_section relative" id="about" style={{ paddingTop: 100 }}>
                 <div className="arlo_tm_about_wrapper_all">
                     <div className="container">
                         <div className="arlo_tm_title_holder">
@@ -15,13 +29,23 @@ export default function About() {
                         <div className="arlo_tm_about_wrap">
                             <div className="author_wrap">
                                 <div className="leftbox">
-                                    <div className="about_image_wrap parallax" data-relative-input="true">
+                                    <div ref={sceneEl} className="about_image_wrap parallax" data-relative-input="true">
                                         <div className="image layer" data-depth="0.1">
-                                            <img src="img/about/550x640.jpg" alt="550x640" />
-                                            <div className="inner" data-img-url={imageAbout}></div>
+                                            <img src={logo550} alt="550x640" />
+                                            <div className="inner" data-img-url={imageAbout}
+                                            style={{ background: `url(${imageAbout})  center center no-repeat`,backgroundSize: "cover" }}
+                                            >
+                                                {/* <Tilt
+                                                    scale={1.05}
+                                                >
+                                                    <div style={{ background: `url(${imageAbout}) center center no-repeat`, backgroundSize: "cover", height: '400px', width: "340px" }}>
+                                                        <h1>React Parallax Tilt 👀</h1>
+                                                    </div>
+                                                </Tilt> */}
+                                            </div>
                                         </div>
                                         <div className="border layer" data-depth="0.2">
-                                            <img src="img/about/550x640.jpg" alt="550x640" />
+                                            <img src={logo550} alt="550x640" />
                                             <div className="inner"></div>
                                         </div>
                                     </div>
