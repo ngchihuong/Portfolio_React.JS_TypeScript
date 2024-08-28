@@ -3,10 +3,16 @@ import LeftPart from "../component/LeftPart";
 import MobileMenu from "../component/mobile/Menu";
 import PreLoader from "../component/Preloader";
 import RightPart from "../component/RightPart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
 
 export default function Portfolio() {
     const [hideLeftPart, setHideLeftPart] = useState<boolean>(false);
+    useEffect(()=> {
+        if (isMobile) {
+            setHideLeftPart(true)
+        }
+    }, [isMobile])
     return (
         <div className="arlo_tm_wrapper_all">
 

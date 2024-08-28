@@ -4,6 +4,7 @@ import { AiFillTikTok } from "react-icons/ai"
 import { FaFacebook, FaInstagramSquare } from "react-icons/fa"
 import { FaSquareGithub } from "react-icons/fa6"
 import { IoLogoLinkedin } from "react-icons/io5"
+import { isMobile } from "react-device-detect"
 
 interface IProps {
     hideLeftPart: boolean;
@@ -20,7 +21,7 @@ export default function LeftPart(props: IProps) {
             const section = document.querySelector(`${hash}`)
             if (section) {
                 section?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-            }   
+            }
         }
     }, [])
     const handleClickTab = (tab: string, event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -90,9 +91,16 @@ export default function LeftPart(props: IProps) {
                         </ul>
                     </div>
                 </div>
-                <a className={props.hideLeftPart === true ? "arlo_tm_resize opened" : "arlo_tm_resize"} href="#"
-                    onClick={() => props.setHideLeftPart(!props.hideLeftPart)}
-                ><i className={props.hideLeftPart === true ? "xcon-angle-left opened" : "xcon-angle-left"}></i></a>
+                {!isMobile &&
+                    <a className={props.hideLeftPart === true ? "arlo_tm_resize opened" : "arlo_tm_resize"} href="#"
+                        onClick={(event) => {
+                            event.preventDefault()
+                            props.setHideLeftPart(!props.hideLeftPart)
+                        }}
+                    >
+                        <i className={props.hideLeftPart === true ? "xcon-angle-left opened" : "xcon-angle-left"}></i></a>
+                }
+
             </div>
         </div>
     )
